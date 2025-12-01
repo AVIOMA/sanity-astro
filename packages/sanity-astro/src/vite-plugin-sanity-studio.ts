@@ -18,12 +18,12 @@ export function vitePluginSanityStudio(resolvedOptions: {studioBasePath?: string
         const studioConfig = await this.resolve('/sanity.config')
         if (!studioConfig) {
           throw new Error(
-            '[@sanity/astro]: Sanity Studio requires a `sanity.config.ts|js` file in your project root.',
+            '[@avioma/sanity-astro]: Sanity Studio requires a `sanity.config.ts|js` file in your project root.',
           )
         }
         if (!resolvedOptions.studioBasePath) {
           throw new Error(
-            "[@sanity/astro]: The `studioBasePath` option is required in `astro.config.mjs`. For example — `studioBasePath: '/admin'`",
+            "[@avioma/sanity-astro]: The `studioBasePath` option is required in `astro.config.mjs`. For example — `studioBasePath: '/admin'`",
           )
         }
         return `
@@ -32,7 +32,7 @@ export function vitePluginSanityStudio(resolvedOptions: {studioBasePath?: string
         if (studioConfig.basePath) {
           if (studioConfig.basePath !== "/${resolvedOptions.studioBasePath}") {
             console.warn(
-              "[@sanity/astro]: This integration ignores the basePath setting in sanity.config.ts|js. To set the basePath for Sanity Studio, use the studioBasePath option in astro.config.mjs and remove it from sanity.config.ts.");
+              "[@avioma/sanity-astro]: This integration ignores the basePath setting in sanity.config.ts|js. To set the basePath for Sanity Studio, use the studioBasePath option in astro.config.mjs and remove it from sanity.config.ts.");
           }
         }
 

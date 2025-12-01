@@ -18,7 +18,7 @@ export function vitePluginSanityStudioHashRouter() {
         const studioConfig = await this.resolve('/sanity.config')
         if (!studioConfig) {
           throw new Error(
-            '[@sanity/astro]: Sanity Studio requires a `sanity.config.ts|js` file in your project root.',
+            '[@avioma/sanity-astro]: Sanity Studio requires a `sanity.config.ts|js` file in your project root.',
           )
         }
 

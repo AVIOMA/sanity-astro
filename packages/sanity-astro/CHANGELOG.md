@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.11](https://github.com/AVIOMA/sanity-astro/compare/v3.2.10...v3.2.11) (2025-12-01)
+
+### Bug Fixes
+
+* **deps:** update Vite config to handle CJS modules properly within an ESM environment
+
 ## [3.2.10](https://github.com/sanity-io/sanity-astro/compare/v3.2.9...v3.2.10) (2025-07-15)
 
 
@@ -203,7 +209,7 @@ All notable changes to this project will be documented in this file. See
 
 ### ⚠ BREAKING CHANGES
 
-* **module:** This exposes the integration as a default export to enable `npx astro add @sanity/astro` as an installation method.
+* **module:** This exposes the integration as a default export to enable `npx astro add @avioma/sanity-astro` as an installation method.
 * Remove requirement for hybrid/server rendering ([#147](https://github.com/sanity-io/sanity-astro/issues/147))
 
 ### Features

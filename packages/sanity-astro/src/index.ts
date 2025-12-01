@@ -24,12 +24,12 @@ export default function sanityIntegration(
 
   if (!!studioBasePath && studioBasePath.match(/https?:\/\//)) {
     throw new Error(
-      "[@sanity/astro]: The `studioBasePath` option should be a relative URL. For example — `studioBasePath: '/admin'`",
+      "[@avioma/sanity-astro]: The `studioBasePath` option should be a relative URL. For example — `studioBasePath: '/admin'`",
     )
   }
 
   return {
-    name: '@sanity/astro',
+    name: '@avioma/sanity-astro',
     hooks: {
       'astro:config:setup': ({injectScript, injectRoute, updateConfig}) => {
         updateConfig({
@@ -58,16 +58,16 @@ export default function sanityIntegration(
           if (studioRouterHistory === 'hash') {
             injectRoute({
               // @ts-expect-error
-              entryPoint: '@sanity/astro/studio/studio-route-hash.astro', // Astro <= 3
-              entrypoint: '@sanity/astro/studio/studio-route-hash.astro', // Astro > 3
+              entryPoint: '@avioma/sanity-astro/studio/studio-route-hash.astro', // Astro <= 3
+              entrypoint: '@avioma/sanity-astro/studio/studio-route-hash.astro', // Astro > 3
               pattern: `/${studioBasePath}`,
               prerender: true,
             })
           } else {
             injectRoute({
               // @ts-expect-error
-              entryPoint: '@sanity/astro/studio/studio-route.astro', // Astro <= 3
-              entrypoint: '@sanity/astro/studio/studio-route.astro', // Astro > 3
+              entryPoint: '@avioma/sanity-astro/studio/studio-route.astro', // Astro <= 3
+              entrypoint: '@avioma/sanity-astro/studio/studio-route.astro', // Astro > 3
               pattern: `/${studioBasePath}/[...params]`,
               prerender: false,
             })

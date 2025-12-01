@@ -1,6 +1,6 @@
-# The Official Sanity integration for Astro
+# AVIOMA's Sanity integration for Astro
 
-This integration enables the [Sanity Client][sanity-client] in your [Astro][astro] project and lets you embed Sanity Studio on a route. Astro is an all-in-one web framework that supports a range of UI languages and can be deployed in most places.
+This integration enables the [Sanity Client][sanity-client] in your [Astro][astro] project and lets you embed Sanity Studio on a route or as a separate app. Astro is an all-in-one web framework that supports a range of UI languages and can be deployed in most places.
 
 - [Installation](#installation)
   - [Manual installation of dependencies](#manual-installation-of-dependencies)
@@ -18,7 +18,7 @@ This integration enables the [Sanity Client][sanity-client] in your [Astro][astr
 In your Astro project, run the following command to install the Sanity integration:
 
 ```bash
-npx astro add @sanity/astro @astrojs/react
+npx astro add @avioma/sanity-astro @astrojs/react
 ```
 
 Note: `@astrojs/react` is only needed if you plan to embed a Sanity Studio in your project.
@@ -26,7 +26,7 @@ Note: `@astrojs/react` is only needed if you plan to embed a Sanity Studio in yo
 ### Manual installation of dependencies
 
 ```bash
-npm install @astrojs/react @sanity/astro @sanity/client sanity @types/react-dom @types/react-is @types/react react-dom react-is react styled-components
+npm install @astrojs/react @avioma/sanity-astro @sanity/client sanity @types/react-dom @types/react-is @types/react react-dom react-is react styled-components
 ```
 
 ### Adding types for `sanity:client`
@@ -35,7 +35,7 @@ This integration leverages [Vite.js' virtual modules][vite-virtual-modules] with
 
 ```dts
 /// <reference types="astro/client" />
-/// <reference types="@sanity/astro/module" />
+/// <reference types="@avioma/sanity-astro/module" />
 ```
 
 You might have to restart the TS Server running in your code editor to get it to resolve types after updating this file. The easiest way to do this is to restart the application.
@@ -47,7 +47,7 @@ You might have to restart the TS Server running in your code editor to get it to
 Configure the integration in your `astro.config.mjs` file. The configuration options and methods are the same as for [@sanity/client](https://github.com/sanity-io/client#readme):
 
 ```typescript
-import sanity from '@sanity/astro'
+import sanity from '@avioma/sanity-astro'
 import {defineConfig} from 'astro/config'
 
 // https://astro.build/config
@@ -125,7 +125,7 @@ You can use this configuration file to install plugins, add a schema with docume
 
 ```javascript
 // astro.config.mjs
-import sanity from '@sanity/astro'
+import sanity from '@avioma/sanity-astro'
 import {defineConfig} from 'astro/config'
 import react from '@astrojs/react'
 
@@ -217,11 +217,11 @@ export default defineConfig({
 
 ### 1. Enable [Overlays][overlays] using the `VisualEditing` component
 
-Add `VisualEditing` from `@sanity/astro/visual-editing` in your ["page shell" layout](https://docs.astro.build/en/basics/layouts/):
+Add `VisualEditing` from `@avioma/sanity-astro/visual-editing` in your ["page shell" layout](https://docs.astro.build/en/basics/layouts/):
 
 ```ts
 ---
-import {VisualEditing} from '@sanity/astro/visual-editing'
+import VisualEditing from '@avioma/sanity-astro/visual-editing'
 
 export type props = {
   title: string

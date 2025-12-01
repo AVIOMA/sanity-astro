@@ -1,4 +1,4 @@
-import sanity from '@sanity/astro'
+import sanity from '@avioma/sanity-astro'
 import {defineConfig} from 'astro/config'
 import react from '@astrojs/react'
 

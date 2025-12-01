@@ -1,7 +1,7 @@
 {
-  "name": "@sanity/astro",
-  "version": "3.2.10",
-  "description": "Official Sanity Astro integration",
+  "name": "@avioma/sanity-astro",
+  "version": "3.2.11",
+  "description": "AVIOMA's Sanity Astro integration",
   "keywords": [
     "astro-integration",
     "withastro",
@@ -9,11 +9,11 @@
   ],
   "homepage": "https://www.sanity.io/plugins/sanity-astro",
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-astro/issues"
+    "url": "https://github.com/AVIOMA/sanity-astro/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/sanity-io/sanity-astro.git",
+    "url": "git+ssh://git@github.com/AVIOMA/sanity-astro.git",
     "directory": "packages/sanity-astro"
   },
   "license": "MIT",
@@ -21,20 +21,18 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "module": "./dist/sanity-astro.mjs",
+      "import": "./dist/sanity-astro.mjs",
       "default": "./dist/sanity-astro.mjs"
     },
     "./module": "./module.d.ts",
     "./studio/studio-route.astro": "./dist/studio/studio-route.astro",
     "./studio/studio-route-hash.astro": "./dist/studio/studio-route-hash.astro",
-    "./studio/studio-component.tsx": {
-      "types": "./src/studio/studio-component.tsx",
-      "default": "./src/studio/studio-component.tsx"
+    "./studio/studio-component": {
+      "types": "./dist/types/studio/studio-component.d.ts",
+      "import": "./dist/studio-component.mjs",
+      "default": "./dist/studio-component.mjs"
     },
-    "./visual-editing": {
-      "import": "./dist/visual-editing/index.ts",
-      "default": "./dist/visual-editing/index.ts"
-    }
+    "./visual-editing": "./dist/visual-editing/visual-editing.astro"
   },
   "types": "./dist/types/index.d.ts",
   "files": [
@@ -44,20 +42,21 @@
     "module.d.ts"
   ],
   "scripts": {
-    "build": "rimraf dist && vite build && pnpm copyStudio && pnpm copy:visual-editing",
+    "build": "rimraf dist && vite build && pnpm copy:astro-files",
     "clean": "rimraf dist && rimraf .turbo && rimraf node_modules",
-    "copy:visual-editing": "cp -r src/visual-editing dist/visual-editing",
-    "copyStudio": "cp -r src/studio dist/studio",
+    "copy:astro-files": "mkdir -p dist/studio dist/visual-editing && cp src/studio/*.astro dist/studio/ && cp src/visual-editing/*.astro dist/visual-editing/ && sed -i '' \"s|from './visual-editing-component'|from '../visual-editing-component.mjs'|g\" dist/visual-editing/visual-editing.astro && sed -i '' \"s|from './studio-component'|from '../studio-component.mjs'|g\" dist/studio/*.astro",
     "dev": "vite build --watch",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@sanity/visual-editing": "^2.15.2",
-    "history": "^5.3.0"
+    "history": "^5.3.0",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@sanity/client": "^7.6.0",
     "@types/serialize-javascript": "^5.0.4",
+    "@vitejs/plugin-react": "^5.1.1",
     "astro": "5.11.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
